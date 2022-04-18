@@ -10,3 +10,14 @@
 body {
   font-family: 'Yuji Boku', sans-serif;
 }
+
+.box {
+  border: solid 1px #000;
+  height: 40px;
+  width: 40px;
+  margin: 3px;
+  margin-bottom: 0;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
