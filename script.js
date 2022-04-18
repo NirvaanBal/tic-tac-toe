@@ -1,24 +1,57 @@
 const Gameboard = (() => {
-  let gameBoard = ['0', 'X', 'X', '0', '0', 'X', '0', 'X', 'X'];
+  const gameBoard = ['', '', '', '', '', '', '', '', ''];
 
-  const addBoardToDOM = function (selector) {
+  const _addBoardToHTML = () => {
     let boardHTML = ``;
     gameBoard.forEach((box, index) => {
-      boardHTML += `<span class="box" data-id=${index + 1}>${box}</span>`;
+      boardHTML += `<span class="box" data-id=${
+        index + 1
+      } data-disable="false">${box}</span>`;
       if ((index + 1) % 3 === 0) boardHTML += `<br>`;
     });
-    document.querySelector(selector).innerHTML = boardHTML;
+    document.querySelector('.board').innerHTML = boardHTML;
   };
 
-  return { addBoardToDOM };
+  const draw = () => {
+    _addBoardToHTML();
+  };
+
+  return { draw, gameBoard };
 })();
 
-const Players = () => {
-  let p1, p2;
+const Player = () => {
+  const _markers = ['O', 'X'];
+  const playerStartingMarker = _markers[Math.floor(Math.random() * 2)];
 
-  return { p1, p2 };
+  return { marker: playerStartingMarker };
 };
 
-const Game = (() => {})();
+const Game = (() => {
+  let _playerMarker = Player().marker;
 
-Gameboard.addBoardToDOM('.board');
+  const _toggleMarker = (marker) => {
+    return marker === 'O' ? (_playerMarker = 'X') : (_playerMarker = 'O');
+  };
+
+  const _boxSelected = () => {
+    document.querySelectorAll('.box').forEach((box, index) => {
+      box.addEventListener('click', (e) => {
+        if (e.target.dataset.disable === 'false') {
+          Gameboard.gameBoard[index] = _playerMarker;
+          e.target.textContent = _playerMarker;
+          e.target.dataset.disable = 'true';
+          _toggleMarker(_playerMarker);
+        }
+      });
+    });
+  };
+
+  const init = () => {
+    Gameboard.draw();
+    _boxSelected();
+  };
+
+  return { init };
+})();
+
+Game.init();
