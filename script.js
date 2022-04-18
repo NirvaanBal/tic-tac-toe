@@ -1,7 +1,16 @@
 const Gameboard = (() => {
-  let gameBoard = ['', '', '', '', '', '', '', '', ''];
+  let gameBoard = ['0', 'X', 'X', '0', '0', 'X', '0', 'X', 'X'];
 
-  return { gameBoard };
+  const addBoardToDOM = function (selector) {
+    let boardHTML = ``;
+    gameBoard.forEach((box, index) => {
+      boardHTML += `<span class="box" data-id=${index + 1}>${box}</span>`;
+      if ((index + 1) % 3 === 0) boardHTML += `<br>`;
+    });
+    document.querySelector(selector).innerHTML = boardHTML;
+  };
+
+  return { addBoardToDOM };
 })();
 
 const Players = () => {
@@ -11,3 +20,5 @@ const Players = () => {
 };
 
 const Game = (() => {})();
+
+Gameboard.addBoardToDOM('.board');
