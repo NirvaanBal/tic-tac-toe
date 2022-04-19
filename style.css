@@ -52,17 +52,6 @@ body {
   font-weight: bold;
 }
 
-.content form button {
-  width: 100%;
-  outline: none;
-  cursor: pointer;
-  border: none;
-  background: #000;
-  color: #fff;
-  font-size: 15px;
-  padding: 5px 0;
-}
-
 .content .first {
   margin-bottom: 20px;
   font-size: 20px;
