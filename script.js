@@ -44,6 +44,7 @@ const Game = (() => {
   const _form = document.querySelector('form');
   const _content = document.querySelector('.content');
   _content.style.display = 'none';
+  const _restart = document.querySelector('.restart');
 
   const _toggleMarker = (marker) => {
     return marker === 'O' ? (_player = 'X') : (_player = 'O');
@@ -186,12 +187,14 @@ const Game = (() => {
       const human = document.getElementById('human');
       const computer = document.getElementById('computer');
       human.addEventListener('click', () => {
+        _restart.style.display = 'inline-block';
         _action(human.value);
         ui.style.display = 'none';
         _content.style.display = 'flex';
         _choice = human.value;
       });
       computer.addEventListener('click', () => {
+        _restart.style.display = 'inline-block';
         _action(computer.value);
         ui.style.display = 'none';
         _content.style.display = 'flex';
@@ -202,10 +205,15 @@ const Game = (() => {
 
   const init = (initiate) => {
     Gameboard.draw('');
+    restart();
     _displayController();
   };
 
-  return { init };
+  const restart = () => {
+    _restart.addEventListener('click', () => location.reload());
+  };
+
+  return { init, restart };
 })();
 
 Game.init();

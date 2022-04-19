@@ -31,6 +31,11 @@ body {
   text-transform: uppercase;
 }
 
+.header .restart {
+  margin-top: 20px;
+  display: none;
+}
+
 .header h2 {
   margin-top: 20px;
 }
