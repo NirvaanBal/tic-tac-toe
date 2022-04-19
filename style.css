@@ -21,12 +21,46 @@ body {
   text-align: center;
   padding: 20px 0;
   margin-bottom: 20px;
+  text-transform: uppercase;
 }
 
 .content {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.content form {
+  margin-bottom: 20px;
+}
+
+.content form .form-control {
+  margin-bottom: 5px;
+}
+
+.content form .form-control label {
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.content form input[type='text'] {
+  padding: 5px;
+  font-size: 15px;
+  outline: none;
+  border: solid 2px #000;
+  width: 200px;
+  font-weight: bold;
+}
+
+.content form button {
+  width: 100%;
+  outline: none;
+  cursor: pointer;
+  border: none;
+  background: #000;
+  color: #fff;
+  font-size: 15px;
+  padding: 5px 0;
 }
 
 .content .first {
@@ -54,6 +88,10 @@ body {
   align-items: center;
   font-size: 20px;
   font-weight: bold;
+}
+
+.content .board .row .box:hover {
+  border-style: solid;
 }
 
 .content .reset {
