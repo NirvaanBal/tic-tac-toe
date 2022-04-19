@@ -112,7 +112,6 @@ const Game = (() => {
           _result(Gameboard.gameBoard, _player);
           _toggleMarker(_player);
         }
-        console.log(_counter);
 
         if (_winner) {
           _winnerEl.textContent = `Player "${_winner}" won`;
