@@ -56,6 +56,18 @@ body {
   font-weight: bold;
 }
 
+.content .reset {
+  font-weight: bold;
+  font-size: 15px;
+  background: #000;
+  color: #fff;
+  border: none;
+  outline: none;
+  margin-top: 20px;
+  cursor: pointer;
+  padding: 7px 14px;
+}
+
 .content .winner {
   margin: 20px 0;
   font-weight: bold;

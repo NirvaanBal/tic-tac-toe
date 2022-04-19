@@ -34,6 +34,7 @@ const Game = (() => {
   let _winner,
     _counter = 0;
   let _winnerEl = document.querySelector('.winner');
+  const _resetBtn = document.querySelector('.reset');
 
   const _toggleMarker = (marker) => {
     return marker === 'O' ? (_player = 'X') : (_player = 'O');
@@ -98,6 +99,11 @@ const Game = (() => {
     _counter = 0;
     Game.init();
   };
+
+  _resetBtn.addEventListener('click', () => {
+    _reset();
+    _winnerEl.textContent = '';
+  });
 
   const action = () => {
     document.querySelector('.first').textContent = `Player ${_player}`;
