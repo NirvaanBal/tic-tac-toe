@@ -2,13 +2,15 @@ const Gameboard = (() => {
   const gameBoard = ['', '', '', '', '', '', '', '', ''];
 
   const _addBoardToHTML = (text) => {
-    let boardHTML = ``;
+    let boardHTML = `<div class="row">`;
     gameBoard.forEach((box, index) => {
-      boardHTML += `<span class="box" data-id=${
+      boardHTML += `<div class="box" data-id=${
         index + 1
-      } data-disable="false">${text}</span>`;
-      if ((index + 1) % 3 === 0) boardHTML += `<br>`;
+      } data-disable="false">${text}</div>`;
+      if ((index + 1) % 3 === 0 && index !== 8)
+        boardHTML += `</div><div class="row">`;
     });
+    boardHTML += `</div>`;
     document.querySelector('.board').innerHTML = boardHTML;
   };
 
