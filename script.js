@@ -89,6 +89,7 @@ const Game = (() => {
   };
 
   const _reset = () => {
+    Gameboard.gameBoard = Gameboard.gameBoard.map((_) => '');
     _player = Player().player;
     _winner = undefined;
     Game.init();
