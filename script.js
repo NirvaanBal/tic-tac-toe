@@ -31,7 +31,8 @@ const Player = () => {
 
 const Game = (() => {
   let _player = Player().player;
-  let _winner;
+  let _winner,
+    _counter = 0;
   let _winnerEl = document.querySelector('.winner');
 
   const _toggleMarker = (marker) => {
@@ -94,6 +95,7 @@ const Game = (() => {
     Gameboard.gameBoard = Gameboard.gameBoard.map((_) => '');
     _player = Player().player;
     _winner = undefined;
+    _counter = 0;
     Game.init();
   };
 
@@ -101,6 +103,7 @@ const Game = (() => {
     document.querySelector('.first').textContent = `Player ${_player}`;
     document.querySelectorAll('.box').forEach((box, index) => {
       box.addEventListener('click', (e) => {
+        _counter++;
         if (!_winner) _winnerEl.textContent = '';
         if (e.target.dataset.disable === 'false') {
           Gameboard.gameBoard[index] = _player;
@@ -109,9 +112,13 @@ const Game = (() => {
           _result(Gameboard.gameBoard, _player);
           _toggleMarker(_player);
         }
+        console.log(_counter);
 
         if (_winner) {
           _winnerEl.textContent = `Player "${_winner}" won`;
+          _reset();
+        } else if (!_winner && _counter === 9) {
+          _winnerEl.textContent = `It's a tie!`;
           _reset();
         }
       });
