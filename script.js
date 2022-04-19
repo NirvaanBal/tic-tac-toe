@@ -1,19 +1,19 @@
 const Gameboard = (() => {
   const gameBoard = ['', '', '', '', '', '', '', '', ''];
 
-  const _addBoardToHTML = () => {
+  const _addBoardToHTML = (text) => {
     let boardHTML = ``;
     gameBoard.forEach((box, index) => {
       boardHTML += `<span class="box" data-id=${
         index + 1
-      } data-disable="false">${box}</span>`;
+      } data-disable="false">${text}</span>`;
       if ((index + 1) % 3 === 0) boardHTML += `<br>`;
     });
     document.querySelector('.board').innerHTML = boardHTML;
   };
 
-  const draw = () => {
-    _addBoardToHTML();
+  const draw = (value) => {
+    _addBoardToHTML(value);
   };
 
   return { draw, gameBoard };
@@ -29,82 +29,93 @@ const Player = () => {
 
 const Game = (() => {
   let _player = Player().player;
-  let winner;
+  let _winner;
+  let _winnerEl = document.querySelector('.winner');
 
   const _toggleMarker = (marker) => {
     return marker === 'O' ? (_player = 'X') : (_player = 'O');
   };
 
-  const action = () => {
-    document.querySelectorAll('.box').forEach((box, index) => {
-      box.addEventListener('click', (e) => {
-        if (e.target.dataset.disable === 'false') {
-          Gameboard.gameBoard[index] = _player;
-          e.target.textContent = _player;
-          e.target.dataset.disable = 'true';
-          result(Gameboard.gameBoard, _player);
-          _toggleMarker(_player);
-        }
-      });
-    });
-  };
-
-  const result = (gameArray, value) => {
+  const _result = (gameArray, value) => {
     if (
       gameArray[0] === value &&
       gameArray[1] === value &&
       gameArray[2] === value
     ) {
-      winner = _player;
+      _winner = _player;
     } else if (
       gameArray[3] === value &&
       gameArray[4] === value &&
       gameArray[5] === value
     ) {
-      winner = _player;
+      _winner = _player;
     } else if (
       gameArray[6] === value &&
       gameArray[7] === value &&
       gameArray[8] === value
     ) {
-      winner = _player;
+      _winner = _player;
     } else if (
       gameArray[0] === value &&
       gameArray[3] === value &&
       gameArray[6] === value
     ) {
-      winner = _player;
+      _winner = _player;
     } else if (
       gameArray[1] === value &&
       gameArray[4] === value &&
       gameArray[7] === value
     ) {
-      winner = _player;
+      _winner = _player;
     } else if (
       gameArray[2] === value &&
       gameArray[5] === value &&
       gameArray[8] === value
     ) {
-      winner = _player;
+      _winner = _player;
     } else if (
       gameArray[0] === value &&
       gameArray[4] === value &&
       gameArray[8] === value
     ) {
-      winner = _player;
+      _winner = _player;
     } else if (
       gameArray[2] === value &&
       gameArray[4] === value &&
       gameArray[6] === value
     ) {
-      winner = _player;
+      _winner = _player;
     }
+  };
 
-    if (winner) console.log(winner);
+  const _reset = () => {
+    _player = Player().player;
+    _winner = undefined;
+    Game.init();
+  };
+
+  const action = () => {
+    document.querySelectorAll('.box').forEach((box, index) => {
+      box.addEventListener('click', (e) => {
+        if (!_winner) _winnerEl.textContent = '';
+        if (e.target.dataset.disable === 'false') {
+          Gameboard.gameBoard[index] = _player;
+          e.target.textContent = _player;
+          e.target.dataset.disable = 'true';
+          _result(Gameboard.gameBoard, _player);
+          _toggleMarker(_player);
+        }
+
+        if (_winner) {
+          _winnerEl.textContent = `Player "${_winner}" won`;
+          _reset();
+        }
+      });
+    });
   };
 
   const init = () => {
-    Gameboard.draw();
+    Gameboard.draw('');
     action();
   };
 
