@@ -8,8 +8,8 @@
 }
 
 :root {
-  --primary-color: #fff;
-  --bg-color: #292929;
+  --primary-color: #000;
+  --bg-color: #fff;
 }
 
 body {
@@ -29,6 +29,24 @@ body {
   padding: 20px 0;
   margin-bottom: 20px;
   text-transform: uppercase;
+}
+
+.header h2 {
+  margin-top: 20px;
+}
+
+.header button {
+  border: none;
+  background: var(--primary-color);
+  color: var(--bg-color);
+  font-weight: bold;
+  font-size: 16px;
+  padding: 5px 15px;
+  cursor: pointer;
+}
+
+.header p {
+  margin: 10px 0;
 }
 
 .content {
