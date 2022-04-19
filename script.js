@@ -96,6 +96,7 @@ const Game = (() => {
   };
 
   const action = () => {
+    document.querySelector('.first').textContent = `Player ${_player}`;
     document.querySelectorAll('.box').forEach((box, index) => {
       box.addEventListener('click', (e) => {
         if (!_winner) _winnerEl.textContent = '';
