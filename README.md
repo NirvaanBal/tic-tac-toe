@@ -1,8 +1,8 @@
-# tic-tac-toe
+# Tic Tac Toe
 
-Tic Tac Toe built using Factory function and module pattern.
+Tic Tac Toe built using Factory function and module pattern. [Live here](https://nirvaanbal.github.io/tic-tac-toe/).
 
-### Features
+## Features
 
 - Play one-on-one 🥊
 - Play against Computer 🧮
@@ -10,6 +10,7 @@ Tic Tac Toe built using Factory function and module pattern.
 - Hit restart button to go to main page
 - Hit reset anytime between the game to get new playing area
 
-### Idea
+## Idea
 
-The idea has been taken from The Odin Project's JavaScript course which includes a project with same name.
+Project Idea - [The Odin Project](https://theodinproject.com)
+Font - [Major Mono Display](https://fonts.google.com)
