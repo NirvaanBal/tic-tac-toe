@@ -10,6 +10,10 @@ Tic Tac Toe built using Factory function and module pattern. [Live here](https:/
 - Hit restart button to go to main page
 - Hit reset anytime between the game to get new playing area
 
+## Raison d'être
+
+The motive behind this project was to learn building a project using design patterns.
+
 ## Idea
 
 Project Idea - [The Odin Project](https://theodinproject.com)
